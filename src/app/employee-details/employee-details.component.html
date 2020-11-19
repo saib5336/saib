@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+        <div class="col-md-12">
+			<h4 class="dark-grey">Employee Details: {{data.length}}</h4>
+			<a routerLink="/" class="pull-right" routerLinkActive="active">Previous</a>
+		</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <select  class="form-control" (selected)="sort_depts()">
+                <option>Select here</option>
+                <option *ngFor="let depts of data | unique" [value]="depts.departments">{{depts.departments}}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input type="text" [(ngModel)]="query" class="form-control" placeholder="Search...">
+        </div>
+        <div class="col-md-4">
+            <label for="sort">Sort by : </label>&nbsp;
+            <select (change)="sort()"> 
+                <option>a-z</option>
+                <option>z-a</option>
+                <option>age</option>
+                <option>email</option>
+            </select>
+        </div>
+</div>
+
+</div>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="table-responsive ">
+                    <table class="table table-bordered card-body">
+                        <thead>
+                            <tr>
+                                <th (click)="sort_data('name')">Emp Name <i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+                                <th (click)="sort_data('age')">Age <i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+                                <th (click)="sort_data('email')">Email Address <i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+                                <th (click)="sort_data('depts')">Departments <i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp_data of data | search : query; let i = index ">
+                                <td>{{emp_data.name}}</td>
+                                <td>{{emp_data.age}}</td>
+                                <td>{{emp_data.email}}</td>
+                                <td placement="top" ngbTooltip= {{emp_data.departments}}>{{emp_data.departments.length}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,202 @@
+<div class="container">
+	<div class="row">
+        <div class="col-md-12">
+			<h2 class="dark-grey">Registration</h2>
+			<a routerLink="/employee-details" class="pull-right" routerLinkActive="active">Next Assignment</a>
+
+		</div>
+    </div>
+</div>
+	<div class="container">
+		<div class="card-body">
+		<form [formGroup]="registerForm">
+						<div class="row">
+							<div class="col-md-6">
+									<div class="form-group row">
+										<label for="full_name" class="col-md-4 col-form-label text-md-right">First Name :</label>
+										<div class="col-md-8">
+										<input type="text" formControlName="firstName" class="form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+									      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+									    	<div *ngIf="f.firstName.errors.required">First Name is required</div>
+									      </div>
+										</div>
+									</div>
+								<div class="form-group row">
+									<label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name :</label>
+									<div class="col-md-8">
+										<input type="text" formControlName="lastName" class="form-control" placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+										<div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+											<div *ngIf="f.lastName.errors.required">Last Name is required</div>
+										</div>
+									</div>
+								</div>
+							<div class="form-group row">
+								<label for="email" class="col-md-4 col-form-label text-md-right">Email :</label>
+								<div class="col-md-8">
+									<input type="text" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+									<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+										<div *ngIf="f.email.errors.required">Email is required</div>
+										<div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="dateofbirth" class="col-md-4 col-form-label text-md-right">DOB :</label>
+								<div class="col-md-8">
+									<input type="date" formControlName="dob" class="form-control"  placeholder="Date of birth" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+									<div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+										<div *ngIf="f.dob.errors.required">Date of birth is required</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone :</label>
+								 <div class="col-md-7">
+									<input type="text" formControlName="phone" class="form-control" placeholder="Phone Number" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+									<div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+										<div *ngIf="f.phone.errors.required">Phone number is required</div>
+										<div *ngIf="f.phone.errors.phone">Phone number is Numaric</div>
+									</div>
+										<div *ngFor="let phone of fieldArray; let i = index">
+											<div class="form-group">
+											<input class="form-control" placeholder="Phone Number" type="text" formControlName="phone2" [ngClass]="{ 'is-invalid': submitted && f.phone2.errors }"/>
+											<div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+												<div *ngIf="f.phone2.errors.required">Phone number is required</div>
+												<div *ngIf="f.phone2.errors.phone2">Phone number is Numaric</div>
+											</div>
+										</div>
+										  </div>
+										</div>
+									<div class="col-md-1">
+										<div class="add-btn">
+										<button  class="btn btn-md" (click)="addFieldValue()"><i class="fa fa-plus"></i>  </button>
+										<div *ngFor="let phone of fieldArray; let i = index">
+											<button class="btn btn-md" (click)="removePhone(i)"><i class="fa fa-trash-o"></i></button>    
+										  </div>
+										</div>
+									</div>
+							
+							</div>
+						</div>
+		
+						<div class="col-md-6">
+							<div class="form-group row">
+							<label for="address" class="col-md-3 col-form-label text-md-right">Address :</label>
+							<div class="col-md-8">
+								<textarea placeholder="Address.." class="form-control" formControlName="address" placeholder="Address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" ></textarea>
+								<div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+								<div *ngIf="f.address.errors.required">Address is required</div>
+								</div>
+							</div>
+						</div>
+					    	<div class="form-group row">
+							<label for="nid_number" class="col-md-3 col-form-label text-md-right">Country :</label>
+							<div class="col-md-8">
+							<select class="form-control" formControlName="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+							<option value="">Select Country...</option>
+							<option value="Afghanistan">Afghanistan</option>
+							<option value="Albania">Albania</option>
+							<option value="Algeria">Algeria</option>
+							<option value="American Samoa">American Samoa</option>
+							<option value="Andorra">Andorra</option>
+						</select>
+						<div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+							<div *ngIf="f.country.errors.required">Country is required</div>
+							</div>
+						</div>
+						</div>
+						<div class="form-group row">
+							<label for="nid_number" class="col-md-3 col-form-label text-md-right">State :</label>
+							<div class="col-md-8">
+								<select class="form-control" formControlName="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+									<option value="">Select a state...</option>
+									<option value="AL">Alabama</option>
+									<option value="AK">Alaska</option>
+									<option value="AZ">Arizona</option>
+									<option value="AR">Arkansas</option>
+									<option value="CA">California</option>
+									<option value="CO">Colorado</option>
+									</select>
+									<div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+										<div *ngIf="f.state.errors.required">State is required</div>
+										</div>
+									</div>
+									</div>
+									<div class="form-group row">
+										<label for="zip" class="col-md-3 col-form-label text-md-right">Zip :</label>
+										<div class="col-md-8">
+												<input type="text" formControlName="zip" placeholder="Zip" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.zip.errors }" />
+												<div *ngIf="submitted && f.zip.errors" class="invalid-feedback">
+													<div *ngIf="f.zip.errors.required">Zip Code is required</div>
+													<div *ngIf="f.zip.errors.zip">Zip Code must be Numaric only</div>
+												</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 text-center">
+											<button class="btn btn-primary mr-1" (click)="onSubmit()">Save</button>
+											<button class="btn btn-secondary" type="reset" (click)="onReset()">Reset</button>
+										</div>
+									</div>
+								</div>
+						</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="container mt-5 mb-5">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<table class="table table-bordered  card-body">
+							<thead>
+								<tr>
+									<th><input type="checkbox" [(ngModel)]="selectedAll"  (change)="selectAll()"></th>
+									<th>Name</th>
+									<th>Email Address</th>
+									<th>Date of birth</th>
+									<th>Phone</th>
+									<th>Address</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="text-center" >
+									<td  colspan="7" *ngIf="this.UserList.length == 0"><p>No-data</p></td>
+								</tr>
+								<tr *ngFor="let user of UserList;let i = index">
+									<td><input type="checkbox" [(ngModel)]="user.selected"></td>
+									<td>{{user.firstName}} {{user.lastName}}</td>
+									<td>{{user.email}}</td>
+									<td>{{user.dob}}</td>
+									<td>{{user.phone}} <br>{{user.phone2}}</td>
+									<td>{{user.address}}, {{user.state}}, {{user.country}}, {{user.zip}}</td>
+									<td (click)="open(content)" class="text-center btn-"><i class="fa fa-trash-o" aria-hidden="true"></i>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ng-template #content let-modal>
+			<div class="modal-header">
+			  <h4 class="modal-title" id="modal-basic-title">Are You Sure?</h4>
+			  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body text-center">
+			  <p>You want to delete it?</p>
+			  <!-- <div *ngFor="let user of UserList;let i = index">
+				<p><strong>{{user.firstName}} {{user.lastName}} </strong> User</p>
+			</div> -->
+			<!-- <p>{{userdelete.firstName}}</p> -->
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger custom-btn" (click)="delete(i);modal.close('Save click')">Delete</button>
+			  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+			</div>
+		  </ng-template>

@@ -1,0 +1,21 @@
+.close:focus {
+    padding: 1rem 1rem;
+    margin: -1rem -1rem -1rem auto;
+    outline: none;
+    cursor: pointer;
+}
+.modal-body p{
+font-size: 16px;
+}
+.btn-md i{
+cursor: pointer;
+}
+.custom-btn{
+    color: #fff !important;
+}
+
+.add-btn {
+    position: relative;
+    top: 0px;
+    left: -13px;
+}

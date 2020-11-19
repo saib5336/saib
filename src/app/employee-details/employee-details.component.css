@@ -1,0 +1,8 @@
+table tr th {
+    cursor: pointer;
+}
+table tr th i{
+font-weight: normal;
+font-size: 10px;
+color: #7d838a;
+}
